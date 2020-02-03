@@ -1,0 +1,50 @@
+package com.readthefilefrom.txtfile;
+
+import java.io.File;
+import java.util.Scanner;
+
+public class Readthedata {
+	private  static Scanner x;
+
+	public static void main(String[] args) 
+	{
+		String username="liki";
+		String password="123";
+		String filepath="liki.txt";
+		Readthedata(username,password,filepath);
+		
+	}
+	public static void Readthedata(String username,String password,String filepath)
+	{
+		boolean found=false;
+		String tempusername ="";
+		String temppassword ="";
+	
+
+	
+	
+	try 
+	{
+		x=new Scanner(new File(filepath));
+		x.useDelimiter("[,\n]");
+		while(x.hasNext()&& !found) 
+		{
+			tempusername = x.next();
+			temppassword= x.next();
+			if(tempusername.trim().equals(username.trim()) && temppassword.trim().equals(password.trim()))
+				{
+				found = true;
+				}
+		}
+		x.close();
+		System.out.println(""+found);
+	}
+	catch(Exception e)
+	{
+//		System.out.println("error");
+		
+	};
+	
+	
+}
+}
